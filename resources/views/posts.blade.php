@@ -8,6 +8,7 @@
 		<h5> {{ $post["author"]}} </h5>
 		<p> {{ $post["body"]}} </p>
 		<p>Hai Kamu Yang Disana</p>
+		<p>Hai Kamu Yang Disana Disana</p>
 		</article>
 	@endforeach
 
