@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\NikahController;
+use App\Http\Controllers\IbadahController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,45 +14,18 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', [IndexController::class,'index']);
 
-Route::get('/', function () {
-    return view('home', [
-    	"title" => "Home"
-    ]);
-});
+Route::get('/nikah', [NikahController::class,'nikah']);
+Route::get('/create', [NikahController::class,'create']);
+Route::post('/store', [NikahController::class,'store']);
+Route::get('/show/{id}', [NikahController::class, 'show']);
+Route::post('/update/{id}', [NikahController::class,'update']);
+Route::get('/destroy/{id}', [NikahController:: class, 'destroy']); 
 
-Route::get('/about', function () {
-    return view('about', [
-    	"title" => "About",
-    	"name" => "Muhamad Roni Kurniawan",
-    	"email" => "muhamadroni16092000@gmail.com",
-    	"image" => "peeps2.png"
-    ]);
-});
-
-
-Route::get('/posts', function () {
-
-	$blog_posts = [
-	[
-		"title" => "Judul Post Pertama",
-		"author" => "Ronn",
-		"body" => "Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak"
-	],
-	[
-		"title" => "Judul Post Pertama",
-		"author" => "Ronn",
-		"body" => "Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak"
-	],
-];
-
-    return view('posts', [
-    	"title" => "Posts",
-    	"posts" => $blog_posts
-    ]);
-});
-
-Route::get('/nasabah', [NasabahController::class,'index']); 
-
-//Route::get('/nasabah', [App\Http\Controllers\NasabahController::class, 'index']);
-
+Route::get('/tempat_ibadah', [IbadahController::class,'ibadah']);
+Route::get('/create1', [IbadahController::class,'create1']);
+Route::post('/store1', [IbadahController::class,'store1']);
+Route::get('/show1/{id}', [IbadahController::class, 'show1']);
+Route::post('/update1/{id}', [IbadahController::class,'update1']);
+Route::get('/destroy1/{id}', [IbadahController:: class, 'destroy1']);
